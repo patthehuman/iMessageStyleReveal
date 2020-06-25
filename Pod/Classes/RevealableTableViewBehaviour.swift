@@ -139,7 +139,7 @@ extension RevealableTableViewBehaviour: UIGestureRecognizerDelegate {
     fileprivate func updateTransform(transform: CGAffineTransform?, cell: UITableViewCell, config: RevealableViewConfiguration, revealableView: RevealableView, indexPath: IndexPath) {
         var x = currentOffset
 
-        if position == .trailing {
+        if position == .leading {
             x = max(x, -revealableView.bounds.width)
             x = min(x, 0)
         } else {
@@ -151,7 +151,7 @@ extension RevealableTableViewBehaviour: UIGestureRecognizerDelegate {
             ? cell.contentView
             : revealableView
 
-        transformView.transform = transform ?? CGAffineTransform(translationX: x, y: 0)
+        transformView.transform = transform ?? CGAffineTransform(translationX: -x, y: 0)
     }
 
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
